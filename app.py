@@ -11,8 +11,8 @@ def hello():
               "http"  : os.environ.get('FIXIE_URL', ''),
               "https" : os.environ.get('FIXIE_URL', '')
             }
-    r = requests.get('http://fixie:YpcpuxmrFDMenhX@54.173.229.200:80', proxies=proxyDict)
-    return 'From Fixie'
+    r = requests.get('www.google.com', proxies=proxyDict)
+    return r
 
 # @app.route('/next')
 # def next():
