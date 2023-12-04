@@ -7,6 +7,10 @@ app = Flask(__name__)
 def hello():
     return 'Hello from Python!'
 
+@app.route('/next')
+def next():
+    return 'Hello from nextPath!'
+
 if __name__ == '__main__':
    app.run(debug=True)
 
