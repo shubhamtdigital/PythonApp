@@ -69,7 +69,7 @@ def connect():
     }
 
     # Set up the proxy
-    socks.set_default_proxy(proxy_type, addr=proxy_host, port=proxy_port)
+    socks.set_default_proxy(proxy_type, addr=proxy_host)
     socket.socket = socks.socksocket
 
     # Connect to the database via proxy
