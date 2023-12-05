@@ -51,7 +51,7 @@ def connect():
     # Parse the database URL
     database_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
     url = urlparse(database_url)
-    
+    print(f"url: {url}")
     # Set up SOCKS proxy
     socks_host = "fixie:k2KJ04rPQQ047n8@speedway.usefixie.com:1080"
     socks_port = 1080  # Change to the actual port used by your SOCKS proxy
