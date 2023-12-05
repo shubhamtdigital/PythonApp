@@ -53,7 +53,7 @@ def connect():
     url = urlparse(database_url)
     
     # Set up SOCKS proxy
-    socks_host = "fixie:k2KJ04rPQQ047n8@speedway.usefixie.com"
+    socks_host = "fixie:k2KJ04rPQQ047n8@speedway.usefixie.com:1080"
     socks_port = 1080  # Change to the actual port used by your SOCKS proxy
     
     socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, socks_host, socks_port)
