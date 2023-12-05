@@ -6,7 +6,7 @@ from psycopg2 import sql
 from urllib.parse import urlparse
 import socks
 import socket
-from urlparse import urlparse
+# from urlparse import urlparse
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ proxyDict = {
  }
 
  # Extract proxy connection details from env variable
-proxy = urlparse(os.environ['QUOTAGUARDSTATIC_URL'])
+proxy = urlparse('https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294')
 
 @app.route('/')
 def hello():
@@ -98,18 +98,19 @@ def connect():
     #         cursor.close()
     #         connection.close()
 
-@app('/new')
-def newRoute();
-s = socks.socksocket()
-s.set_proxy(socks.SOCKS5, proxy.hostname, 1080, True, proxy.username,proxy.password)
-host = "httpbin.org"
-s.connect((host, 80))
+@app.route('/new')
+def newRoute():
+    s = socks.socksocket()
+    s.set_proxy(socks.SOCKS5, proxy.hostname, 1080, True, proxy.username,proxy.password)
+    host = "httpbin.org"
+    s.connect((host, 80))
+    print('s: ',s)
 
-request = "GET /ip HTTP/1.1\nHost: "+host+"\nUser-Agent:Mozilla 5.0\n\n"
-s.send(request)
+    request = "GET /ip HTTP/1.1\nHost: "+host+"\nUser-Agent:Mozilla 5.0\n\n"
+    s.send(request)
 
-response = s.recv(1024)
-print response.text
+    response = s.recv(1024)
+    # print response.text
 
 if __name__ == '__main__':
    app.run(debug=True)
