@@ -56,8 +56,8 @@ def connect():
     socks_host = "fixie:k2KJ04rPQQ047n8@speedway.usefixie.com:1080"
     socks_port = 1080  # Change to the actual port used by your SOCKS proxy
     
-    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, socks_host, socks_port)
-    socket.socket = socks.socksocket
+    socks_proxy = socks.socksocket()
+    socks_proxy.setproxy(socks.PROXY_TYPE_SOCKS5, socks_host, socks_port)
     
     # Connect to PostgreSQL
     try:
@@ -66,7 +66,8 @@ def connect():
             user=url.username,
             password=url.password,
             host=url.hostname,
-            port=url.port
+            port=url.port,
+            connection_factory=socks_proxy
         )
     
         # Create a cursor
