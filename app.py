@@ -11,8 +11,8 @@ import socket
 app = Flask(__name__)
 
 proxyDict = {
-              "http"  : os.environ.get('FIXIE_URL', ''),
-              "https" : os.environ.get('FIXIE_URL', '')
+              "http"  : os.environ.get('FIXIE_SOCKS_SOCKS_HOST', ''),
+              "https" : os.environ.get('FIXIE_SOCKS_SOCKS_HOST', '')
  }
 
 @app.route('/')
@@ -28,7 +28,7 @@ def connect():
     url = urlparse(db_url)
     # Set up the proxy settings
     print(proxyDict)
-    # proxy_host = proxyDict['http']
+    proxy_host = proxyDict['http']
     proxy_ips = ['54.173.229.200', '54.175.230.252']
     proxy_port = 1080
     proxy_type = socks.SOCKS5  # Change this based on your proxy type
@@ -44,7 +44,7 @@ def connect():
     }
 
     # Set up the proxy
-    socks.set_default_proxy(proxy_type, addr=selected_proxy_ip, port=proxy_port)
+    socks.set_default_proxy(proxy_type, addr=proxy_host, port=proxy_port)
     socket.socket = socks.socksocket
 
     # Connect to the database via proxy
