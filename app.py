@@ -21,8 +21,29 @@ def hello():
     # r = requests.get('https://www.google.com')
     return r.text
 
+def get_public_ip():
+    try:
+        # Use a service that echoes the client's IP address
+        response = requests.get('https://api64.ipify.org?format=json')
+        
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Parse the JSON response and extract the IP address
+            ip_address = response.json()['ip']
+            return ip_address
+        else:
+            print(f"Error: Unable to fetch IP address. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+    # Get and print the public IP address
+    my_ip = get_public_ip()
+    print(f"My public IP address is: {my_ip}")
+
 @app.route('/dbconnect')
 def connect():
+    my_ip = get_public_ip()
+    print(f"My public IP address is: {my_ip}")
     # Parse the database URL
     db_url = "postgres://ucrol25emqd2ch:p31d791a3fe8bcb5b5102d7b8b43f08ca70ee2cc9d7943c23b4db6b110324346e@ec2-52-2-248-148.compute-1.amazonaws.com:5432/d2r45oj3jf7gs7"
     url = urlparse(db_url)
