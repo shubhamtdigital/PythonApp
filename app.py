@@ -28,7 +28,7 @@ def connect():
     url = urlparse(db_url)
     # Set up the proxy settings
     print(proxyDict)
-    proxy_host = proxyDict['http']
+    proxy_ip = '54.173.229.200'
     proxy_port = 1080
     proxy_type = socks.SOCKS5  # Change this based on your proxy type
 
