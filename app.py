@@ -1,4 +1,3 @@
-# app.py
 import os, requests
 from flask import Flask
 
@@ -19,6 +18,7 @@ proxyDict = {
 def hello():
     # return 'Hello from Python!'
     r = requests.get('https://www.google.com', proxies=proxyDict)
+    # r = requests.get('https://www.google.com')
     return r.text
 
 @app.route('/dbconnect')
@@ -41,6 +41,9 @@ def connect():
         'password': url.password,
         'host': url.hostname,
         'port': url.port,
+        'sslmode': 'require',  # Use 'require' to enable SSL
+        'sslcert': '/certificates/postgresql.crt',  # Path to client certificate file
+        'sslkey': '/certificates/postgresql.key'  # Pat
     }
 
     # Set up the proxy
@@ -53,13 +56,13 @@ def connect():
         cursor = connection.cursor()
 
         # Example query
-        # query = sql.SQL('SELECT * FROM pgadmin."Prospect" limit 1;')
-        # cursor.execute(query)
+        query = sql.SQL('SELECT * FROM pgadmin."Prospect" limit 1;')
+        cursor.execute(query)
 
         # Fetch results
-        # results = cursor.fetchall()
-        print('con:', connection)
-        return 'Hi'
+        results = cursor.fetchall()
+        print('results:', results)
+        return "private_working"
 
     except Exception as e:
         print(f"Error: {e}")
@@ -71,6 +74,3 @@ def connect():
 
 if __name__ == '__main__':
    app.run(debug=True)
-
-
-
