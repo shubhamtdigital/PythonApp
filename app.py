@@ -42,8 +42,8 @@ def connect():
         'host': url.hostname,
         'port': url.port,
         'sslmode': 'require',  # Use 'require' to enable SSL
-        'sslcert': '/certificates/postgresql.crt',  # Path to client certificate file
-        'sslkey': '/certificates/postgresql.key'  # Pat
+        'sslcert': '/postgresql.crt',  # Path to client certificate file
+        'sslkey': '/postgresql.key'  # Pat
     }
 
     # Set up the proxy
