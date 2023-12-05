@@ -103,7 +103,8 @@ def newRoute():
     s = socks.socksocket()
     s.set_proxy(socks.SOCKS5, proxy.hostname, 1080, True, proxy.username,proxy.password)
     host = "httpbin.org"
-    s.connect((host, 80))
+    print('host: ',s)
+    s.connect((host))
     print('s: ',s)
 
     request = "GET /ip HTTP/1.1\nHost: "+host+"\nUser-Agent:Mozilla 5.0\n\n"
