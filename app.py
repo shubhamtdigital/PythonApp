@@ -11,8 +11,8 @@ import socket
 app = Flask(__name__)
 
 proxyDict = {
-              "http"  : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294',
-              "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294'
+              "http"  : 'fixie:k2KJ04rPQQ047n8@speedway.usefixie.com:1080',
+              "https" : 'fixie:k2KJ04rPQQ047n8@speedway.usefixie.com:1080'
  }
 
  # Extract proxy connection details from env variable
