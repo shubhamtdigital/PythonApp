@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 proxyDict = {
               "http"  : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294',
-              "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294'
+              "https" : 'https://r09cndoizux678:44m6nmtadw9bg10eowfxi45cyrbyku@us-east-shield-04.quotaguard.com:9294' 
  }
 
  # Extract proxy connection details from env variable
